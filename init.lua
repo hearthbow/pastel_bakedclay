@@ -5,16 +5,16 @@ local S = core.get_translator("pastel_bakedclay")
 -- colour list
 
 local pc = {
-    {"ppink", "Pastel Pink", "pink"},
-	{"plightpink", "Pastel Light Pink", "lightpink"},
-	{"porange", "Pastel Orange", "orange"},
-	{"ppurple", "Pastel Purple", "purple"},
-	{"pyellow", "Pastel Yellow", "yellow"},
-	{"pblue", "Pastel Blue", "blue"},
-	{"polivegreen", "Pastel Olive Green", "olivegreen"},
-	{"pmintgreen", "Pastel Mint Green", "mintgreen"},
-	{"pcyan", "Pastel Cyan", "cyan"},
-	{"pred", "Pastel Red", "red"},
+    {"pink", "Pastel Pink"},
+	{"lightpink", "Pastel Light Pink"},
+	{"orange", "Pastel Orange"},
+	{"purple", "Pastel Purple"},
+	{"yellow", "Pastel Yellow"},
+	{"blue", "Pastel Blue"},
+	{"olivegreen", "Pastel Olive Green"},
+	{"mintgreen", "Pastel Mint Green"},
+	{"cyan", "Pastel Cyan"},
+	{"red", "Pastel Red"},
 	
 }
 
@@ -46,7 +46,7 @@ for _, row in ipairs(pc) do
 			output = "pastel_bakedclay:" .. row[1] .. " 8",
 			recipe = {
 				{"group:bakedclay", "group:bakedclay", "group:bakedclay"},
-				{"group:bakedclay", "pastel_dye:" .. row[3], "group:bakedclay"},
+				{"group:bakedclay", "pastel_dye:" .. row[1], "group:bakedclay"},
 				{"group:bakedclay", "group:bakedclay", "group:bakedclay"}
 			}
 		})

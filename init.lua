@@ -5,34 +5,33 @@ local S = core.get_translator("pastel_bakedclay")
 -- colour list
 
 local pc = {
-    {"pink", "Pastel Pink"},
-	{"lightpink", "Pastel Light Pink"},
-	{"orange", "Pastel Orange"},
-	{"purple", "Pastel Purple"},
-	{"yellow", "Pastel Yellow"},
-	{"blue", "Pastel Blue"},
-	{"olivegreen", "Pastel Olive Green"},
-	{"mintgreen", "Pastel Mint Green"},
-	{"cyan", "Pastel Cyan"},
-	{"red", "Pastel Red"},
+    {"ppink", "Pastel Pink", "pink"},
+	{"plightpink", "Pastel Light Pink", "lightpink"},
+	{"porange", "Pastel Orange", "orange"},
+	{"ppurple", "Pastel Purple", "purple"},
+	{"pyellow", "Pastel Yellow", "yellow"},
+	{"pblue", "Pastel Blue", "blue"},
+	{"polivegreen", "Pastel Olive Green", "olivegreen"},
+	{"pmintgreen", "Pastel Mint Green", "mintgreen"},
+	{"pcyan", "Pastel Cyan", "cyan"},
+	{"pred", "Pastel Red", "red"},
 	
 }
 
 -- check mod support
 
-local techcnc_mod = core.get_modpath("technic_cnc")
 local stairs_mod = core.get_modpath("stairs")
 local stairsplus_mod = core.get_modpath("moreblocks") and core.global_exists("stairsplus")
 local stairsplus_compat = core.settings:get_bool("stairsplus_clay_compatibility") ~= false
 
--- scroll through colours
+
 
 for _, row in ipairs(pc) do
 
 	-- register node
 
 	core.register_node("pastel_bakedclay:" .. row[1], {
-		description = row[2] .. " " .. "Baked Clay",
+		description = row[2] .. " Baked Clay",
 		tiles = {"pastel_bakedclay_" .. row[1] ..".png"},
 		groups = {cracky = 3, bakedclay = 1},
 		sounds = default.node_sound_stone_defaults(),
@@ -44,10 +43,10 @@ for _, row in ipairs(pc) do
 for _, row in ipairs(pc) do
 
 		core.register_craft({
-			output = "bakedclay:" .. row[1] .. " 8",
+			output = "pastel_bakedclay:" .. row[1] .. " 8",
 			recipe = {
 				{"group:bakedclay", "group:bakedclay", "group:bakedclay"},
-				{"group:bakedclay", "pastel_dye:" .. row[1], "group:bakedclay"},
+				{"group:bakedclay", "pastel_dye:" .. row[3], "group:bakedclay"},
 				{"group:bakedclay", "group:bakedclay", "group:bakedclay"}
 			}
 		})
@@ -74,10 +73,10 @@ for _, row in ipairs(pc) do
 					"pastel_bakedclay", row[1])
 
 			core.register_alias("stairs:slab_pastel_bakedclay_".. row[1],
-					"bakedclay:slab_pastel_baked_clay_" .. row[1])
+					"pastel_bakedclay:slab_pastel_baked_clay_" .. row[1])
 
 			core.register_alias("stairs:stair_pastel_bakedclay_".. row[1],
-					"bakedclay:stair_pastel_baked_clay_" .. row[1])
+					"pastel_bakedclay:stair_pastel_baked_clay_" .. row[1])
 		end
 
 	-- stairs redo
@@ -106,22 +105,11 @@ for _, row in ipairs(pc) do
 for _, row in ipairs(pc) do
 
    mymillwork.register("pastel_bakedclay:" .. row[1], 
-   "pastel_bakedclay_" .. row[1],
+   "pastel_" .. row[1],
    row[2] .. "Baked Clay",
    "pastel_bakedclay_" .. row[1] .. ".png",
    {cracky = 3, bakedclay = 1, not_in_creative_inventory = 1}
    )
  end
  
--- register facade
-
-if facade_mod then 
-
-   facade.register_facade_nodes("pastel_bakedclay:" .. row[1], 
-   "pastel_bakedclay_" .. row[1],
-   row[2] .. "Baked Clay",
-   "pastel_bakedclay_" .. row[1] .. ".png",
-   {cracky = 3, bakedclay = 1, not_in_creative_inventory = 1}
-   )
-   end
-end 
+end
